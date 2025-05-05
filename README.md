@@ -1,14 +1,13 @@
 # Low Latency Trading Router Demo
 
-This project demonstrates the impact of zeroGC techniques on a realistic FIX trading system built with Java 21 and LMAX Disruptor.
+This project demonstrates the impact of zeroGC techniques on a realistic trading system built with Java 21.
 
 ## Key Features
 
-- **Real-world use case**: FIX protocol order router using industry-standard QuickFIX/J
-- **High throughput**: LMAX Disruptor pattern for maximum performance
+- **Real-world use case**: Simulates a trading order processing system
 - **Zero GC mode**: Object reuse, pooling and ZGC optimization
 - **Benchmark**: Side-by-side comparison of standard vs. zero GC approaches
-- **Detailed metrics**: Latency histograms with nanosecond precision
+- **Simple implementation**: No external dependencies required
 
 ## About the "ZeroGC" Mode
 
@@ -26,12 +25,31 @@ This simplified demo focuses on the basic techniques of object pooling and reuse
 This project is designed to be simple and self-contained:
 
 - **SimpleMain**: The entry point that requires no external dependencies
-- **Benchmark package**: Contains additional zero-GC technique examples
+- **Benchmark package**: Contains additional zero-GC technique examples (for educational purposes)
 - **No external dependencies**: Everything runs with standard Java libraries
 
 > **Note:** The original version of this project included a `Main` class that used LMAX Disruptor,
 > QuickFIX/J, and other external libraries to demonstrate these techniques in a more realistic
 > trading environment. The current version uses `SimpleMain` for simplicity and ease of use.
+
+## Educational Resources
+
+This project includes additional code that is not used by SimpleMain but is kept for educational purposes:
+
+- **Benchmark package**: Examples of various zero-GC techniques:
+  - ObjectPoolDemo - Demonstrates object pooling
+  - StringInternDemo - Shows string interning for avoiding duplicates
+  - ThreadAffinityDemo - Demonstrates thread-to-core pinning
+  - DirectBufferDemo - Shows off-heap memory usage
+  
+- **Additional packages**: Original implementations that used external dependencies:
+  - disruptor - LMAX Disruptor pattern implementation 
+  - fix - QuickFIX/J implementation
+  - gc - GC strategy patterns
+  - model - Domain model classes
+  - util - Utility classes
+
+These packages are not required to run SimpleMain but provide valuable examples of advanced techniques.
 
 ## Performance Comparison
 
@@ -54,9 +72,3 @@ Benchmark results typically show:
 5. Compare the benchmark results
 
 The run script will automatically detect if you have Gradle installed and fallback to manual compilation if needed.
-
-## Building Manually
-
-If you prefer to build manually:
-
-Using Gradle:
